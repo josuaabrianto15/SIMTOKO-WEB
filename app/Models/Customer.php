@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Customer extends Model
+{
+    use SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'phone',
+        'email',
+        'address',
+    ];
+
+    // ─── Relationships ────────────────────────────────────────────────────────
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+}
